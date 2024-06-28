@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Membuat aplikasi belanja atau e-commerce website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/21ENeMyS/BECOMMERCE.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "website"
+  ],
+  "author": "21EnEmYs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/21ENeMyS/BECOMMERCE/issues"
+  },
+  "homepage": "https://github.com/21ENeMyS/BECOMMERCE#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
