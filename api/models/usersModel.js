@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     salt: String,
+    role: {
+      type: Number,
+      default: 0,
+    },
     profile: {
       type: String,
       required: true,
@@ -73,7 +77,7 @@ userSchema
   });
 
 userSchema.methods = {
-  auhtenticate: function (plainText) {
+  authenticate: function (plainText) {
     return new Promise((resolve, reject) => {
       /**
        * menkomper password atau mebandingkan password yang di inputkan oleh user apakah sama dengan yang ada di database ?
@@ -81,15 +85,21 @@ userSchema.methods = {
        */
       bcrypt.compare(plainText, this.hashed_password, (err, isMatch) => {
         if (err) reject(err);
+        // jika sama maka masuk
         resolve(isMatch);
       });
     });
   },
 
+  //enkripsi password
+
   encryptPassword: function (password) {
+    // jika password tidak di isi
     if (!password) return "";
     try {
+      // password akan di enkripsi ke dalam database
       const salt = bcrypt.genSaltSync(10);
+      // terjadi hash dalam password
       return bcrypt.hashSync(password, salt);
     } catch (error) {
       return "";
