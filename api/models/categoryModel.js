@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const Category = new mongoose.model(
   "Category",
@@ -21,5 +22,10 @@ const Category = new mongoose.model(
     { timestamps: true }
   )
 );
+
+// Category.virtual("slug").get(function (next) {
+//   return slugify(this.name, { lower: true });
+//   next();
+// });
 
 module.exports = Category;
